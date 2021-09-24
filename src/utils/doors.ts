@@ -1,10 +1,10 @@
 import DoorModel from '../model/door';
 
-export function createDoors(quantity: number, selected: number): DoorModel[] {
+export function createDoors(quantity: number, doorWithPresent: number): DoorModel[] {
     return Array.from({length: quantity}, (_, i) => {
-        const number = i + 1
-        const hasGift = number === selected
-        return new DoorModel(number, hasGift)
+        const doorNumber = i + 1
+        const hasGift = doorNumber === doorWithPresent
+        return new DoorModel(doorNumber, hasGift)
     })
 }
 

@@ -1,25 +1,42 @@
 import {useState} from 'react'
-import Door from '../components/Door'
-import {createDoors, updateDoors} from '../utils/doors'
+import Link from 'next/link'
+
+import Card from '../components/Card'
+import styles from '../styles/Home.module.css'
+import NumericEnter from '../components/NumericEnter'
 
 export default function Home(props) {
-    const [doors, setDoors] = useState(createDoors(3, 1))
-
-    function renderDoors() {
-        return doors.map(door => {
-            return (
-                <Door
-                    key={door.number}
-                    door={door}
-                    onChange={newDoor => setDoors(updateDoors(doors, newDoor))}
-                />
-            )
-        })
-    }
+    const [doorsNumber, setDoorsNumber] = useState(3)
+    const [doorWithPresent, setDoorWithPresent] = useState(1)
 
     return (
-        <div style={{display: 'flex'}}>
-            {renderDoors()}
+        <div className={styles.home}>
+            <div>
+                <Card bgcolor="#c0392c">
+                    <h1>Monty Hall</h1>
+                </Card>
+                <Card>
+                    <NumericEnter
+                        text="Doors Number"
+                        value={doorsNumber}
+                        onChange={newDoorsNumber => setDoorsNumber(newDoorsNumber)}
+                    />
+                </Card>
+            </div>
+            <div>
+                <Card>
+                    <NumericEnter
+                        text="Prized Door"
+                        value={doorWithPresent}
+                        onChange={newDoor => setDoorWithPresent(newDoor)}
+                    />
+                </Card>
+                <Card bgcolor="#28a085">
+                    <Link href={`/game/${doorsNumber}/${doorWithPresent}`}>
+                        <h2 className={styles.link}>Start</h2>
+                    </Link>
+                </Card>
+            </div>
         </div>
     )
 }
