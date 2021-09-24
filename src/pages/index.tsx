@@ -32,7 +32,7 @@ export default function Home(props) {
                     />
                 </Card>
                 <Card bgcolor="#28a085">
-                    <Link href={`/game/${doorsNumber}/${doorWithPresent}`}>
+                    <Link href={`/game/${doorsNumber}/${doorWithPresent}`} passHref>
                         <h2 className={styles.link}>Start</h2>
                     </Link>
                 </Card>

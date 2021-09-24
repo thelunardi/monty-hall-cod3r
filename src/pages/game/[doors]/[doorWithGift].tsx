@@ -19,7 +19,7 @@ export default function DoorWithGift() {
         const numberDoorWithPresentValid = doorWithGift >= 1 && doorWithGift <= doors
 
         setValid(numberDoorsValid && numberDoorWithPresentValid)
-    }, [doors])
+    }, [doors, router.query.doorWithGift, router.query.doors])
 
     useEffect(() => {
         const doors = +router.query.doors
@@ -50,7 +50,7 @@ export default function DoorWithGift() {
                 }
             </div>
             <div className={styles.buttons}>
-                <Link href="/">
+                <Link href="/" passHref>
                     <button>Restart</button>
                 </Link>
             </div>
